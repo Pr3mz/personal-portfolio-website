@@ -62,7 +62,7 @@ export const projects: Project[] = [
     title: "Smoke Detector in Car",
     short: "ตรวจจับควันในรถ — alert + logging",
     tags: ["Sensors"],
-    image: "/assets/smoke.jpg",
+    image: "/assets/que.jpg",
     report:""
   },
   {
