@@ -2,16 +2,6 @@ import type { Project } from "../types";
 
 export const projects: Project[] = [
   {
-    id: "ai-face",
-    title: "A.I. Face Recognition Entry",
-    short: "ระบบเปิดประตูด้วยใบหน้า — AI + IoT integration",
-    long:
-      "Implemented face detection and recognition using OpenCV and a lightweight CNN. Hardware: ESP32-CAM, servo lock, Raspberry Pi for inference.",
-    tags: ["AI", "Computer Vision", "IoT"],
-    image: "/assets/ai-face.jpg",
-    repo: "https://github.com/pr3mz/face-entry"
-  },
-  {
     id: "rescue-bot",
     title: "OpenCV Patrol Bot",
     short: "หุ่นยนต์สำรวจ — obstacle avoidance",
@@ -48,21 +38,21 @@ export const projects: Project[] = [
     short: "ระบบประตูอัตโนมัติด้วย Ultrasonic Sensor",
     tags: ["Embedded"],
     image: "/assets/door.jpg",
-    report: ""
+    report: "/assets/door.pdf"
   },
   {
     id: "industrial-alarm",
     title: "Industrial Alarm System",
     short: "ระบบเตือนภัยในโรงงาน — PLC-like logic",
     tags: ["Embedded", "Systems"],
-    image: "/assets/industrial.jpg"
+    image: "/assets/industrial.png"
   },
   {
     id: "smoke-car",
     title: "Smoke Detector in Car",
     short: "ตรวจจับควันในรถ — alert + logging",
     tags: ["Sensors"],
-    image: "/assets/que.jpg",
+    image: "/assets/que.png",
     report:""
   },
   {
