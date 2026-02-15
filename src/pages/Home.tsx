@@ -11,8 +11,7 @@ export default function Home() {
         <img
           src="/assets/PORT_HOME.png"
           alt="Prem"
-          className="w-100 shadow"
-          style={{ height: "40vh", objectFit: "cover" }}
+          className="img-fluid w-100 shadow"
         />
       </div>
 
