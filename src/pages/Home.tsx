@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
-import PORT_HOME from "public/assets/PORT_HOME.png";
 
 export default function Home() {
   const topProjects = projects.slice(0, 3);
@@ -10,7 +9,7 @@ export default function Home() {
       {/* Profile Section */}
       <div className="text-center my-5">
         <img
-          src={PORT_HOME}
+          src="/assets/PORT_HOME.png"
           alt="Prem"
           className="img-fluid rounded-circle shadow"
           style={{ width: "250px", height: "250px", objectFit: "cover" }}
