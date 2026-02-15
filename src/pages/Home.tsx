@@ -7,12 +7,12 @@ export default function Home() {
   return (
     <div className="container-xl">
       {/* Profile Section */}
-      <div className="text-center my-5">
+      <div className="container-fluid p-0">
         <img
           src="/assets/PORT_HOME.png"
           alt="Prem"
-          className="img-fluid rectangle shadow"
-          style={{ width: "250px", height: "250px", objectFit: "cover" }}
+          className="w-100 shadow"
+          style={{ height: "60vh", objectFit: "cover" }}
         />
       </div>
 
