@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
-import PORT_HOME from "../assets/PORT_HOME.png";
+import PORT_HOME from "public/assets/PORT_HOME.png";
 
 export default function Home() {
   const topProjects = projects.slice(0, 3);
