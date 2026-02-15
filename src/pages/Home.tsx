@@ -12,7 +12,7 @@ export default function Home() {
           src="/assets/PORT_HOME.png"
           alt="Prem"
           className="w-100 shadow"
-          style={{ height: "60vh", objectFit: "cover" }}
+          style={{ height: "80vh", objectFit: "cover" }}
         />
       </div>
 
