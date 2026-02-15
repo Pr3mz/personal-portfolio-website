@@ -24,15 +24,15 @@ export const projects: Project[] = [
     title: "Smart Cafe",
     short: "ร้านกาแฟอัจฉริยะ — IoT automations and dashboard",
     tags: ["IoT", "Dashboard"],
-    image: "/assets/smart-cafe.jpg",
-    report: "https://www.canva.com/design/DAGWcI8C7t0/qClc-Ian3ohMFuP5M8SROA/edit?utm_content=DAGWcI8C7t0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+    image: "/assets/PREM.png",
+    report: "/assets/TECHOASIS.pdf"
   },
   {
     id: "smart-house",
     title: "Smart House",
     short: "บ้านอัตโนมัติ — sensors, relays, scheduling",
     tags: ["IoT"],
-    image: "/assets/smart-house.jpg",
+    image: "/assets/MAX.png",
     report:"https://www.canva.com/design/DAGWcI8C7t0/qClc-Ian3ohMFuP5M8SROA/edit?utm_content=DAGWcI8C7t0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
   },
   {
