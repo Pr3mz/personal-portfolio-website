@@ -37,7 +37,7 @@ export const projects: Project[] = [
     title: "Automatic Door System",
     short: "ระบบประตูอัตโนมัติด้วย Ultrasonic Sensor",
     tags: ["Embedded"],
-    image: "/assets/door.jpg",
+    image: "/assets/door.png",
     report: "/assets/door.pdf"
   },
   {
