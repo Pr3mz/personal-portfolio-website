@@ -68,7 +68,7 @@ export const projects: Project[] = [
   {
     id: "garbage-truck",
     title: "Garbage Truck",
-    short: "รถเก็บขยะอัตโนมัติ — microcontroller control",
+    short: "รถเก็บขยะอัตโนมัติ microcontroller control",
     tags: ["MECH", "Embedded"],
     image: "/assets/garbage.jpg",
     report:""
