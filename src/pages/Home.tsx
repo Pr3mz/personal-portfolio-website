@@ -11,7 +11,7 @@ export default function Home() {
         <img
           src="/assets/PORT_HOME.png"
           alt="Prem"
-          className="img-fluid rounded-circle shadow"
+          className="img-fluid rectangle shadow"
           style={{ width: "250px", height: "250px", objectFit: "cover" }}
         />
       </div>
