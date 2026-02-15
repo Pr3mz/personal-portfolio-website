@@ -3,10 +3,28 @@ export default function About() {
     <div className="container-xl py-4">
       <h2>About Me</h2>
       <p>
-        I'm Prem Supthaksina, I wish to be in computer engineering major in
-        KMUTT University. I focus on embedded systems, robotics, and computer
-        vision. I enjoy building full-stack IoT prototypes that combine
-        hardware, firmware, and cloud dashboards.
+        I am Prem Supthaksina, an aspiring Computer Engineering student with a
+        clear goal of pursuing my studies at KMUTT University. My primary
+        interests lie in embedded systems, robotics, and computer vision, where
+        hardware and software converge to create intelligent, real-world
+        solutions. I am particularly driven by system-level thinking —
+        understanding how sensors, microcontrollers, control algorithms, and
+        software architectures integrate into a cohesive and efficient system.
+      </p>
+      <p>
+        I enjoy building full-stack IoT prototypes that connect hardware,
+        firmware, and cloud-based dashboards into a unified platform. From
+        designing circuit layouts and writing low-level firmware to developing
+        backend services and interactive user interfaces, I value the complete
+        engineering pipeline. This holistic approach allows me to transform
+        abstract ideas into tangible, functional systems.
+      </p>
+      <p>
+        My goal is not only to write code but to engineer solutions — systems
+        that are reliable, scalable, and purposeful. I continuously refine both
+        my technical depth and my ability to lead projects, believing that
+        strong engineering requires clarity of thinking, disciplined execution,
+        and the courage to iterate beyond failure.
       </p>
 
       <h5>Skills</h5>
