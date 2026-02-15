@@ -14,9 +14,9 @@ export const projects: Project[] = [
   {
     id: "rescue-bot",
     title: "OpenCV Patrol Bot",
-    short: "หุ่นยนต์สำรวจ — line following + obstacle avoidance",
+    short: "หุ่นยนต์สำรวจ — obstacle avoidance",
     tags: ["Robotics", "Control"],
-    image: "/assets/rescue-bot.jpg",
+    image: "/assets/PATROL.png",
     repo: "https://github.com/Pr3mz/WRO_FUTURE_ENGINEER_Lesonance"
   },
   {
