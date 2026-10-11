@@ -43,20 +43,20 @@ async function run() {
   });
   await desktopPage.waitForTimeout(400);
 
-  // Desktop Full Page (temporarily unfix header to prevent duplicate navbar stitching in fullPage)
-  await desktopPage.evaluate(() => {
-    const nav = document.querySelector('header');
-    if (nav) nav.style.position = 'absolute';
-  });
+  // Desktop Full Page (single-frame unstitched capture)
+  const desktopScrollHeight = await desktopPage.evaluate(() =>
+    Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)
+  );
+  await desktopPage.setViewportSize({ width: 1280, height: desktopScrollHeight });
+  await desktopPage.waitForTimeout(400);
   const desktopFullPath1 = path.join(ARTIFACT_DIR, "desktop_fullpage.png");
   const desktopFullPath2 = path.join(PUBLIC_DIR, "desktop_fullpage.png");
-  await desktopPage.screenshot({ path: desktopFullPath1, fullPage: true });
+  await desktopPage.screenshot({ path: desktopFullPath1 });
   fs.copyFileSync(desktopFullPath1, desktopFullPath2);
-  await desktopPage.evaluate(() => {
-    const nav = document.querySelector('header');
-    if (nav) nav.style.position = 'fixed';
-  });
   console.log("Captured: desktop_fullpage.png");
+
+  // Restore desktop viewport
+  await desktopPage.setViewportSize({ width: 1280, height: 800 });
 
   // Test Modal Interaction on Desktop
   const inspectBtn = desktopPage.locator("button:has-text('Inspect Architecture')").first();
@@ -92,28 +92,27 @@ async function run() {
   fs.copyFileSync(mobileHeroPath1, mobileHeroPath2);
   console.log("Captured: mobile_hero.png");
 
-  // Mobile Full Page
-  await mobilePage.evaluate(async () => {
-    window.scrollTo(0, document.body.scrollHeight);
-  });
-  await mobilePage.waitForTimeout(600);
-  await mobilePage.evaluate(async () => {
-    window.scrollTo(0, 0);
-  });
-  await mobilePage.waitForTimeout(400);
-  await mobilePage.evaluate(() => {
-    const nav = document.querySelector('header');
-    if (nav) nav.style.position = 'absolute';
-  });
-  const mobileFullPath1 = path.join(ARTIFACT_DIR, "mobile_fullpage.png");
-  const mobileFullPath2 = path.join(PUBLIC_DIR, "mobile_fullpage.png");
-  await mobilePage.screenshot({ path: mobileFullPath1, fullPage: true });
-  fs.copyFileSync(mobileFullPath1, mobileFullPath2);
-  await mobilePage.evaluate(() => {
-    const nav = document.querySelector('header');
-    if (nav) nav.style.position = 'fixed';
-  });
-  console.log("Captured: mobile_fullpage.png");
+  // Mobile Sections
+  const sections = [
+    { id: "about", name: "mobile_about.png" },
+    { id: "projects", name: "mobile_projects.png" },
+    { id: "skills", name: "mobile_skills.png" },
+    { id: "milestones", name: "mobile_milestones.png" },
+    { id: "contact", name: "mobile_contact.png" },
+  ];
+
+  for (const sec of sections) {
+    const el = mobilePage.locator(`#${sec.id}`);
+    if (await el.isVisible()) {
+      await el.scrollIntoViewIfNeeded();
+      await mobilePage.waitForTimeout(400);
+      const secPath1 = path.join(ARTIFACT_DIR, sec.name);
+      const secPath2 = path.join(PUBLIC_DIR, sec.name);
+      await mobilePage.screenshot({ path: secPath1 });
+      fs.copyFileSync(secPath1, secPath2);
+      console.log(`Captured: ${sec.name}`);
+    }
+  }
 
   await mobileContext.close();
   await browser.close();
