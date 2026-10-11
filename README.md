@@ -1,131 +1,87 @@
-# Prem Supthaksina — Personal Portfolio Website
+# Prem Supthaksina — High-Performance Engineering Portfolio
 
-A modern, responsive personal portfolio website showcasing engineering projects across **Robotics**, **Computer Vision (OpenCV)**, **Embedded Systems & Firmware**, and **Full-stack IoT Platforms**.
+A modern developer portfolio for **Prem Supthaksina**, Computer Engineering student at **King Mongkut's University of Technology Thonburi (KMUTT)**.
 
-Built with React 19, TypeScript, Vite, and Bootstrap.
-
----
-
-## 🚀 Tech Stack
-
-- **Frontend Framework**: [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
-- **Build Tool**: [Vite](https://vitejs.dev/)
-- **Styling**: [Bootstrap 5](https://getbootstrap.com/) & [Bootstrap Icons](https://icons.getbootstrap.com/)
-- **Routing**: [React Router v7](https://reactrouter.com/)
-- **Linting & Code Quality**: ESLint 9 & TypeScript-ESLint
+Bridging Hardware & Code: **AIoT, Robotics, and Competitive Algorithms**.
 
 ---
 
-## 📁 Project Architecture & Structure
+## ⚡ Tech Stack & Architecture
 
-```
-myportfolioweb/
-├── public/
-│   ├── assets/              # Project images, schematics, and PDF documentation
-│   └── vite.svg
-├── src/
-│   ├── components/
-│   │   ├── layout/
-│   │   │   ├── Navbar.tsx   # Responsive top navigation with active highlights
-│   │   │   └── Footer.tsx   # Comprehensive portfolio footer with social links
-│   │   ├── projects/
-│   │   │   ├── ProjectCard.tsx   # Reusable project preview cards
-│   │   │   ├── ProjectModal.tsx  # Detailed modal view with docs & repo links
-│   │   │   └── ProjectIndex.tsx  # Searchable & filterable project catalog
-│   │   ├── Footer.tsx       # Re-export alias
-│   │   ├── Navbar.tsx       # Re-export alias
-│   │   └── ProjectIndex.tsx # Re-export alias
-│   ├── data/
-│   │   └── projects.ts      # Structured projects data, tags, and links
-│   ├── pages/
-│   │   ├── Home.tsx         # Hero section, engineering pillars & highlights
-│   │   ├── Projects.tsx     # Full projects gallery with category filters
-│   │   ├── About.tsx        # Biography, KMUTT focus & categorized skills
-│   │   ├── Contact.tsx      # Contact channels, copy-email & message form
-│   │   └── NotFound.tsx     # 404 fallback page
-│   ├── types/
-│   │   └── index.ts         # TypeScript interfaces (Project, SkillCategory, etc.)
-│   ├── App.tsx              # Router view layout
-│   ├── index.css            # Custom CSS tokens, hover effects, and utilities
-│   └── main.tsx             # Application bootstrap & global style imports
-├── index.html               # HTML5 entry with meta tags and Google fonts
-├── package.json             # Dependencies and build scripts
-├── tsconfig.json            # TypeScript compiler configuration
-└── vite.config.ts           # Vite bundler configuration
-```
+- **Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/) + Custom SVG Engineering glyphs
+- **Verification**: Playwright automated multi-viewport testing suite
+
+---
+
+## 🏗️ Core Sections & Features
+
+1. **Hero Section (`HeroSection.tsx`, `CodeTerminal.tsx`)**:
+   - KMUTT status pill and high-impact title typography.
+   - Interactive terminal emulator with real-time syntax typing for dual targets:
+     - `esp32_loop.cpp` (FreeRTOS 1000Hz PID motor control loop with MPU6050 IMU)
+     - `aruco_mask.py` (OpenCV 4.x top-view fiducial marker & dynamic HSV mask pipeline)
+
+2. **Engineering Projects Matrix (`ProjectsGrid.tsx`, `ProjectCard.tsx`, `ProjectModal.tsx`)**:
+   - Domain filtering pills (`Robotics/Embedded`, `AI/Computer Vision`, `Web/Cybersecurity`, `Game Engine/AI`) and instant search.
+   - **Eng-Expo Autonomous Robot**: Dual-core ESP32 rover, IR sensors, OpenCV ArUco tracking, Roboflow YOLOv8 obstacle detection, and live CAD schematic viewer.
+   - **UniHack 2026 Scam Call Detection**: Client-side Android call screening architecture & DSP inference pipeline.
+   - **Thailand Cyber Top Talent (Auto888)**: Binary exploitation leadership, reverse engineering, and web pentesting.
+   - **Roblox Survival Horror Architecture**: Modern Luau scripting, DirectorAI finite state machines, and dynamic sanity mechanics.
+   - **Interactive Modal**: Comprehensive hardware specs, algorithm pipelines, and metrics telemetry inspector.
+
+3. **Tech Stack & Skills Matrix (`SkillsMatrix.tsx`)**:
+   - Categorized across 4 technical domains:
+     - **Languages**: C/C++, Python, TypeScript, Luau
+     - **AI & Data**: PyTorch, OpenCV, NumPy, pandas, Matplotlib
+     - **Hardware & Embedded**: ESP32 / ESP32-S3, Arduino / UNO R4, MPU6050 6-DoF IMU, KNOB-SVP, L298N & MOSFET Motor Drivers
+     - **Tools & Environments**: VS Code, Docker, Git/GitHub, Linux/FreeRTOS
+
+4. **Competitions & Experience Timeline (`Timeline.tsx`)**:
+   - Vertical milestone tree with node badges:
+     - SuperAI Engineer Season 5 (AI Fellow Candidate)
+     - UniHack 2026 Hackathon (System Architect & Security Engineer)
+     - WRO (World Robot Olympiad) Future Engineers (Autonomous Navigation Lead)
+     - BangMod Hackathon (KMUTT Prototype Developer)
+     - MakeX Robotics Competition (Tournament Winner)
+     - Kibo Robot Programming Challenge (JAXA / NASA / NSTDA Astrobee)
+     - CS50x Puzzle Day (Harvard CS50)
+
+5. **Direct Dispatch Contact (`ContactSection.tsx`)**:
+   - Quick one-click email clipboard copy button (`premsupthaksina@gmail.com`).
+   - Static mailto dispatch composer and direct profile links (GitHub, LinkedIn).
 
 ---
 
 ## 🛠️ Getting Started
 
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (version 18+ recommended)
-- `npm`
-
-### Installation
-
-1. Navigate to the project directory:
-   ```bash
-   cd myportfolioweb
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
 ### Development Server
-
-Start the local development server with hot-reload:
 ```bash
+npm install
 npm run dev
 ```
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Production Build
-
-Compile and bundle for production:
+### Production Build & Launch
 ```bash
 npm run build
+npm run start
 ```
-Preview the production build locally:
+
+### Viewport Verification Tests
 ```bash
-npm run preview
+node scripts/verify_screenshots.mjs
 ```
-
-### Code Quality & Linting
-
-Run ESLint:
-```bash
-npm run lint
-```
-
----
-
-## 🎯 Key Improvements & Fixes
-
-1. **Security & Dependencies**:
-   - Removed deprecated typo package `boostrap@2.0.0`.
-   - Updated dependencies and resolved 26 security vulnerabilities to 0 vulnerabilities.
-   - Added `bootstrap-icons` for modern UI indicators.
-
-2. **Architecture & Bug Fixes**:
-   - Fixed `Footer.tsx` bug which previously duplicated the entire `ProjectIndex` component across all pages.
-   - Replaced broken `/projects/:id` links with an interactive `ProjectModal` viewer.
-   - Fixed email link in `Contact.tsx` from placeholder `your.email@example.com` to `premsupthaksina@gmail.com`.
-   - Added a `NotFound` (404) page route to prevent blank page crashes on invalid paths.
-
-3. **User Experience & Design**:
-   - Added instant search and category filtering (All, Robotics, IoT, Embedded).
-   - Added Grid and List / Accordion view mode switcher.
-   - Enhanced About page with categorized skill badges, engineering philosophy, and KMUTT academic aspiration.
-   - Enhanced Contact page with a "Copy to Clipboard" email button and interactive form feedback.
+Captures high-resolution responsive desktop and mobile viewport screenshots directly to `public/screenshots/`.
 
 ---
 
 ## 👤 Author
 
 **Prem Supthaksina**
-- GitHub: [@Pr3mz](https://github.com/Pr3mz)
-- Email: [premsupthaksina@gmail.com](mailto:premsupthaksina@gmail.com)
+- **Institution**: Computer Engineering, KMUTT
+- **GitHub**: [@Pr3mz](https://github.com/Pr3mz)
+- **Email**: [premsupthaksina@gmail.com](mailto:premsupthaksina@gmail.com)
