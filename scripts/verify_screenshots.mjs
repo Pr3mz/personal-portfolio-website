@@ -16,8 +16,8 @@ async function run() {
     headless: true,
   });
 
-  // --- 1. DESKTOP VIEWPORT ---
-  console.log("Testing Desktop Viewport (1280x800)...");
+  // --- 1. DESKTOP VIEWPORT (BRIGHT / WHITE THEME DEFAULT) ---
+  console.log("Testing Desktop Viewport (1280x800) - Bright Theme...");
   const desktopContext = await browser.newContext({
     viewport: { width: 1280, height: 800 },
     deviceScaleFactor: 2,
@@ -26,39 +26,42 @@ async function run() {
   await desktopPage.goto("http://localhost:3000", { waitUntil: "networkidle" });
   await desktopPage.waitForTimeout(800);
 
-  // Desktop Hero
-  const desktopHeroPath1 = path.join(ARTIFACT_DIR, "desktop_hero.png");
+  // Desktop Hero (Bright Theme)
+  const desktopHeroPath1 = path.join(ARTIFACT_DIR, "desktop_hero_bright.png");
   const desktopHeroPath2 = path.join(PUBLIC_DIR, "desktop_hero.png");
   await desktopPage.screenshot({ path: desktopHeroPath1 });
   fs.copyFileSync(desktopHeroPath1, desktopHeroPath2);
-  console.log("Captured: desktop_hero.png");
+  console.log("Captured: desktop_hero_bright.png");
 
-  // Scroll down to ensure all lazy elements/animations complete
-  await desktopPage.evaluate(async () => {
-    window.scrollTo(0, document.body.scrollHeight);
-  });
-  await desktopPage.waitForTimeout(600);
-  await desktopPage.evaluate(async () => {
-    window.scrollTo(0, 0);
-  });
-  await desktopPage.waitForTimeout(400);
-
-  // Desktop Full Page (single-frame unstitched capture)
+  // Desktop Full Page (Bright Theme)
   const desktopScrollHeight = await desktopPage.evaluate(() =>
     Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)
   );
   await desktopPage.setViewportSize({ width: 1280, height: desktopScrollHeight });
-  await desktopPage.waitForTimeout(400);
-  const desktopFullPath1 = path.join(ARTIFACT_DIR, "desktop_fullpage.png");
+  await desktopPage.waitForTimeout(500);
+  const desktopFullPath1 = path.join(ARTIFACT_DIR, "desktop_fullpage_bright.png");
   const desktopFullPath2 = path.join(PUBLIC_DIR, "desktop_fullpage.png");
   await desktopPage.screenshot({ path: desktopFullPath1 });
   fs.copyFileSync(desktopFullPath1, desktopFullPath2);
-  console.log("Captured: desktop_fullpage.png");
+  console.log("Captured: desktop_fullpage_bright.png");
 
-  // Restore desktop viewport
+  // Restore viewport and toggle to Dark Mode
   await desktopPage.setViewportSize({ width: 1280, height: 800 });
+  await desktopPage.waitForTimeout(300);
 
-  // Test Modal Interaction on Desktop
+  const themeToggle = desktopPage.locator("[data-testid='theme-toggle']");
+  await themeToggle.click();
+  await desktopPage.waitForTimeout(500);
+
+  // Desktop Hero (Dark Theme)
+  const desktopDarkHeroPath = path.join(ARTIFACT_DIR, "desktop_hero_dark.png");
+  await desktopPage.screenshot({ path: desktopDarkHeroPath });
+  console.log("Captured: desktop_hero_dark.png");
+
+  // Toggle back to Bright Mode and test Project Modal
+  await themeToggle.click();
+  await desktopPage.waitForTimeout(400);
+
   const inspectBtn = desktopPage.locator("button:has-text('Inspect Architecture')").first();
   if (await inspectBtn.isVisible()) {
     await inspectBtn.click();
@@ -75,7 +78,7 @@ async function run() {
   await desktopContext.close();
 
   // --- 2. MOBILE VIEWPORT ---
-  console.log("Testing Mobile Viewport (375x667)...");
+  console.log("Testing Mobile Viewport (375x667) - Bright Theme...");
   const mobileContext = await browser.newContext({
     viewport: { width: 375, height: 667 },
     deviceScaleFactor: 2,
@@ -92,31 +95,9 @@ async function run() {
   fs.copyFileSync(mobileHeroPath1, mobileHeroPath2);
   console.log("Captured: mobile_hero.png");
 
-  // Mobile Sections
-  const sections = [
-    { id: "about", name: "mobile_about.png" },
-    { id: "projects", name: "mobile_projects.png" },
-    { id: "skills", name: "mobile_skills.png" },
-    { id: "milestones", name: "mobile_milestones.png" },
-    { id: "contact", name: "mobile_contact.png" },
-  ];
-
-  for (const sec of sections) {
-    const el = mobilePage.locator(`#${sec.id}`);
-    if (await el.isVisible()) {
-      await el.scrollIntoViewIfNeeded();
-      await mobilePage.waitForTimeout(400);
-      const secPath1 = path.join(ARTIFACT_DIR, sec.name);
-      const secPath2 = path.join(PUBLIC_DIR, sec.name);
-      await mobilePage.screenshot({ path: secPath1 });
-      fs.copyFileSync(secPath1, secPath2);
-      console.log(`Captured: ${sec.name}`);
-    }
-  }
-
   await mobileContext.close();
   await browser.close();
-  console.log("All Playwright responsive verification tests completed successfully!");
+  console.log("All Playwright Bright & Dark verification tests completed successfully!");
 }
 
 run().catch((err) => {

@@ -10,7 +10,7 @@ import { projectsData, skillsGroupsData, timelineData } from "@/data/portfolio";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen flex flex-col bg-black text-neutral-100">
+    <div className="relative min-h-screen flex flex-col bg-white dark:bg-black text-[#1d1d1f] dark:text-[#f5f5f7] transition-colors duration-300">
       <Navbar />
       <main className="flex-1">
         <HeroSection />

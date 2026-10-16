@@ -1,71 +1,77 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
-    --background: 222 47% 4%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 7%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 6%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 199 89% 48%;
-    --primary-foreground: 222 47% 4%;
-    --secondary: 217 33% 14%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 12%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 160 84% 39%;
-    --accent-foreground: 210 40% 98%;
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 199 89% 48%;
+    --nvidia-green: #76b900;
+    --apple-bg: #ffffff;
+    --apple-bg-alt: #f5f5f7;
+    --apple-text: #1d1d1f;
+    --apple-muted: #6e6e73;
+    --apple-border: rgba(0, 0, 0, 0.08);
   }
 
-  * {
-    border-color: #1e293b;
+  .dark {
+    --nvidia-green: #76b900;
+    --apple-bg: #000000;
+    --apple-bg-alt: #0a0a0c;
+    --apple-text: #f5f5f7;
+    --apple-muted: #86868b;
+    --apple-border: rgba(255, 255, 255, 0.1);
   }
 
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html.dark {
     color-scheme: dark;
   }
 
   body {
-    background-color: #070a10;
-    color: #f1f5f9;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+    background-color: var(--apple-bg);
+    color: var(--apple-text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Inter", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
 }
 
+/* Subtle architectural grid for NVIDIA / Apple precision look */
 .grid-bg {
-  background-size: 36px 36px;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+.dark .grid-bg {
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
 }
 
-.glow-cyan {
-  box-shadow: 0 0 35px -5px rgba(56, 189, 248, 0.18);
-}
-
-.glow-emerald {
-  box-shadow: 0 0 30px -5px rgba(16, 185, 129, 0.18);
-}
-
-/* Custom scrollbar */
+/* Custom scrollbar - adapts to light & dark */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
+  background: #f5f5f7;
+}
+.dark ::-webkit-scrollbar-track {
   background: #090d16;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #d2d2d7;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #27272a;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #76b900;
 }

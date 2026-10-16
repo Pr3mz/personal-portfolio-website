@@ -93,36 +93,36 @@ export default function CodeTerminal() {
   };
 
   return (
-    <div className="rounded-2xl bg-slate-950/90 border border-slate-800 shadow-2xl overflow-hidden font-mono text-xs backdrop-blur-xl">
+    <div className="rounded-2xl bg-[#141417] border border-black/15 dark:border-white/10 shadow-xl overflow-hidden font-mono text-xs">
       {/* Window Titlebar */}
-      <div className="bg-slate-900/90 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+      <div className="bg-[#1d1d1f] px-4 py-3 border-b border-white/10 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-rose-500/80"></div>
-          <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
-          <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
-          <span className="ml-2 text-slate-400 font-medium text-[11px]">
+          <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+          <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+          <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+          <span className="ml-2 text-neutral-400 font-medium text-[11px]">
             prem@kmutt-cpe: ~/firmware
           </span>
         </div>
 
         {/* Snippet Tabs */}
-        <div className="flex items-center gap-1 bg-slate-950/80 p-0.5 rounded-lg border border-slate-800">
+        <div className="flex items-center gap-1 bg-black/60 p-0.5 rounded-lg border border-white/10">
           <button
             onClick={() => setActiveTab("cpp")}
-            className={`px-2.5 py-1 rounded text-[11px] font-semibold transition-all ${
+            className={`px-2.5 py-1 rounded text-[11px] font-semibold transition-all cursor-pointer ${
               activeTab === "cpp"
-                ? "bg-cyan-500/20 text-cyan-300 border border-cyan-800/60"
-                : "text-slate-400 hover:text-white"
+                ? "bg-[#76b900]/20 text-[#76b900] border border-[#76b900]/50"
+                : "text-neutral-400 hover:text-white"
             }`}
           >
             esp32_loop.cpp
           </button>
           <button
             onClick={() => setActiveTab("py")}
-            className={`px-2.5 py-1 rounded text-[11px] font-semibold transition-all ${
+            className={`px-2.5 py-1 rounded text-[11px] font-semibold transition-all cursor-pointer ${
               activeTab === "py"
-                ? "bg-emerald-500/20 text-emerald-300 border border-emerald-800/60"
-                : "text-slate-400 hover:text-white"
+                ? "bg-[#76b900]/20 text-[#76b900] border border-[#76b900]/50"
+                : "text-neutral-400 hover:text-white"
             }`}
           >
             aruco_mask.py
@@ -131,20 +131,20 @@ export default function CodeTerminal() {
       </div>
 
       {/* Target Info Bar */}
-      <div className="px-4 py-2 bg-slate-900/40 border-b border-slate-800/60 flex items-center justify-between text-[11px] text-slate-400">
+      <div className="px-4 py-2 bg-black/40 border-b border-white/10 flex items-center justify-between text-[11px] text-neutral-400">
         <div className="flex items-center gap-2">
-          <span className="text-slate-500">TARGET:</span>
-          <span className="text-slate-200">{snippets[activeTab].target}</span>
+          <span className="text-neutral-500">TARGET:</span>
+          <span className="text-neutral-200">{snippets[activeTab].target}</span>
         </div>
         <button
           onClick={handleCopy}
-          className="flex items-center gap-1 text-slate-400 hover:text-white transition-colors"
+          className="flex items-center gap-1 text-neutral-400 hover:text-white transition-colors cursor-pointer"
           title="Copy snippet"
         >
           {copied ? (
             <>
-              <Check className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="text-emerald-400">Copied</span>
+              <Check className="w-3.5 h-3.5 text-[#76b900]" />
+              <span className="text-[#76b900]">Copied</span>
             </>
           ) : (
             <>
@@ -156,18 +156,18 @@ export default function CodeTerminal() {
       </div>
 
       {/* Code Editor Body */}
-      <div className="p-4 bg-black/60 overflow-x-auto min-h-[280px] max-h-[360px] relative text-slate-200 leading-relaxed font-mono">
+      <div className="p-4 bg-[#0d0d10] overflow-x-auto min-h-[280px] max-h-[360px] relative text-neutral-200 leading-relaxed font-mono">
         <pre className="text-[12px]">{displayedCode}</pre>
-        <span className="inline-block w-2 h-4 bg-cyan-400 align-middle ml-1 animate-pulse"></span>
+        <span className="inline-block w-2 h-4 bg-[#76b900] align-middle ml-1 animate-pulse"></span>
       </div>
 
       {/* Telemetry Status Footer */}
-      <div className="px-4 py-2 bg-slate-900/60 border-t border-slate-800/60 flex items-center justify-between text-[11px] font-mono">
-        <span className="text-emerald-400 flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+      <div className="px-4 py-2 bg-[#1d1d1f] border-t border-white/10 flex items-center justify-between text-[11px] font-mono">
+        <span className="text-[#76b900] flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#76b900] animate-ping"></span>
           {snippets[activeTab].telemetry}
         </span>
-        <span className="text-slate-500">FreeRTOS Tick: 1ms</span>
+        <span className="text-neutral-400">FreeRTOS Tick: 1ms</span>
       </div>
     </div>
   );
